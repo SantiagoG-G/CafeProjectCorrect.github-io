@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      header {
+        background-color: #6c4315;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header img {
+        height: 50px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #6c4315;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      input,
+      textarea,
+      button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #6c4315;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #563410;
+      }
+
+      .branches {
+        margin-top: 30px;
+      }
+
+      .branches table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .branches th,
+      .branches td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+
+      .branches th {
+        background-color: #6c4315;
+        color: white;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #6c4315;
+        color: white;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/logo.jpg" alt="Coffee Shop Logo" />
+      <nav>
+        <a href="index.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Contact us</h1>
+      <form>
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Message Subject" required />
+        <textarea placeholder="Message Body" rows="5" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="branches">
+        <h2>Branches</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Address</th>
+              <th>Contact</th>
+              <th>Opening Hours</th>
+            </tr>
+          </thead>
+          <tbody id="branches"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2024 Bryan's |
+      <a href="privacy.html" style="color: white" target="_blank"
+        >privacy policy</a
+      >
+    </footer>
+
+    <script>
+      // Load data from XML
+      fetch("Branches.xml")
+        .then((response) => response.text())
+        .then((data) => {
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(data, "application/xml");
+
+          const branches = xml.getElementsByTagName("Branch");
+          const tableBody = document.getElementById("branches");
+
+          Array.from(branches).forEach((branch) => {
+            const row = document.createElement("tr");
+
+            const address =
+              branch.getElementsByTagName("Address")[0].textContent;
+            const contact =
+              branch.getElementsByTagName("Contact")[0].textContent;
+            const openingHours =
+              branch.getElementsByTagName("OpeningHours")[0].textContent;
+            const link = branch.getElementsByTagName("Link")[0].textContent;
+
+            row.innerHTML = `
+                <td><a href="${link}" target="_blank">${address}</a></td>
+                <td>${contact}</td>
+                <td>${openingHours}</td>
+            `;
+
+            tableBody.appendChild(row);
+          });
+        })
+        .catch((error) => console.error("Error loading XML:", error));
+    </script>
+  </body>
+</html>

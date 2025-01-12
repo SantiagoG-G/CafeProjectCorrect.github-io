@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Menu SYSTEM "Menu.dtd">
+<Menu>
+    <Meals>
+        <Item>
+            <Name>Beetroot and feta salad</Name>
+            <Price>15.00</Price>
+            <Description>Suitable for vegetarians, made with fresh beetroot</Description>
+        </Item>
+        <Item>
+            <Name>Sourdough Rye Sandwich</Name>
+            <Price>18.00</Price>
+            <Description>Cheese and salad sandwich made with organic, sourdough rye bread</Description>
+        </Item>
+        <Item>
+            <Name>Spinach Pie and Salad</Name>
+            <Price>20.00</Price>
+            <Description>Tasty pie with salad</Description>
+        </Item>
+        <Item>
+            <Name>Feta pancakes with salad</Name>
+            <Price>19.50</Price>
+            <Description>Tasty pancake filled with feta and salad</Description>
+        </Item>
+    </Meals>
+    <Beverages>
+        <CoffeeAndHotChocolate>
+            <Size>
+                <Name>Small</Name>
+                <Price>15.00</Price>
+            </Size>
+            <Size>
+                <Name>Regular</Name>
+                <Price>18.00</Price>
+            </Size>
+            <Size>
+                <Name>Large</Name>
+                <Price>20.00</Price>
+            </Size>
+        </CoffeeAndHotChocolate>
+    </Beverages>
+    <OtherBeverages>
+        <Item>
+            <Name>Soda</Name>
+            <Price>3.00</Price>
+        </Item>
+        <Item>
+            <Name>Fresh juice</Name>
+            <Price>6.00</Price>
+        </Item>
+        <Item>
+            <Name>Bottled water</Name>
+            <Price>2.00</Price>
+        </Item>
+    </OtherBeverages>
+</Menu>

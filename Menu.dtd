@@ -1,0 +1,10 @@
+<!ELEMENT Menu (Meals, Beverages, OtherBeverages)>
+<!ELEMENT Meals (Item+)>
+<!ELEMENT Item (Name, Price, Description?)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Price (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Beverages (CoffeeAndHotChocolate)>
+<!ELEMENT CoffeeAndHotChocolate (Size+)>
+<!ELEMENT Size (Name, Price)>
+<!ELEMENT OtherBeverages (Item+)>
